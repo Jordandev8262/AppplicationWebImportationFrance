@@ -2,12 +2,14 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { FiShoppingCart, FiUser, FiMenu, FiX, FiSearch } from 'react-icons/fi'
+import { FiShoppingCart, FiUser, FiMenu, FiX, FiSearch, FiHeart } from 'react-icons/fi'
 import { useCart } from '@/context/CartContext'
+import { useFavorites } from '@/context/FavoritesContext'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { items } = useCart()
+  const { favoritesCount } = useFavorites()
   const cartItemCount = items.reduce((sum, item) => sum + item.quantity, 0)
 
   return (
@@ -42,6 +44,14 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             <Link href="/catalogue" className="p-2 text-gray-700 hover:text-blue-600">
               <FiSearch className="w-5 h-5" />
+            </Link>
+            <Link href="/favoris" className="relative p-2 text-gray-700 hover:text-red-600 transition-colors">
+              <FiHeart className="w-5 h-5" />
+              {favoritesCount > 0 && (
+                <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {favoritesCount}
+                </span>
+              )}
             </Link>
             <Link href="/panier" className="relative p-2 text-gray-700 hover:text-blue-600">
               <FiShoppingCart className="w-5 h-5" />

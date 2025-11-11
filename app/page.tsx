@@ -136,7 +136,7 @@ export default function Home() {
           </div>
 
           {/* Main content with right-side video panel */}
-          <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-6 items-start">
+          <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-6 items-stretch">
             {/* Products grid */}
             <div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
@@ -233,9 +233,9 @@ export default function Home() {
             </div>
 
             {/* Right-side rotating ads (images) */}
-            <aside className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 sticky top-6 hidden xl:block">
+            <aside className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 sticky top-6 hidden xl:flex xl:flex-col h-full">
               <h3 className="text-base font-semibold text-gray-900 mb-3">Publicité</h3>
-              <div className="rounded-lg overflow-hidden border border-gray-200">
+              <div className="rounded-lg overflow-hidden border border-gray-200 flex-1 min-h-0">
                 <AdCarousel
                   images={[
                     { src: '/images/ads/ad-1.jpg', alt: 'Promo Équipements ' },
@@ -243,7 +243,7 @@ export default function Home() {
                     { src: '/images/ads/ad-3.jpg', alt: 'Nouveautés Catalogue' },
                   ]}
                   intervalMs={3500}
-                heightClass="h-72"
+                  heightClass="h-full"
                 />
               </div>
               <p className="text-sm text-gray-500 mt-3">
